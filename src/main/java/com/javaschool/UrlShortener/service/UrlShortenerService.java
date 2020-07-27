@@ -1,38 +1,63 @@
 package com.javaschool.UrlShortener.service;
 
 import com.javaschool.UrlShortener.entity.Url;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.Hashtable;
+import java.util.*;
 
 @Service
 public class UrlShortenerService {
 
-    static Hashtable urls = new Hashtable();
-    static {
-        urls.put("asdfg","https://yahoo.com.mx");
-        urls.put("abc12","https://google.com");
-        urls.put("httpswwwgmdvtv","https://www.gamedev.tv");
+    static Hashtable<String,String> urls = new Hashtable();
+
+    public Hashtable<String,String> getAll(){
+        return urls;
     }
 
+
     public String create(Url url){
-        if (urls.containsValue(url.getUrl())){
+        if (urls.containsValue(url.getUrl().toLowerCase())){
             return null;
         } else {
-            String shortUrl = RandomStringUtils.randomAlphanumeric(7);
-            shortUrl = RandomStringUtils.random(7,true,true);
-            urls.put(shortUrl,url.getUrl());
+            String shortUrl;
+            if(url.getUrl().toLowerCase().contains("google")){
+                shortUrl = randomString(5,false);
+            } else if (url.getUrl().toLowerCase().contains("yahoo")){
+                shortUrl = randomString(7,true);
+            } else {
+
+                shortUrl = url.getUrl().replaceAll("[^a-z]", "");
+            }
+
+            urls.put(shortUrl,url.getUrl().toLowerCase());
 
             return shortUrl;
         }
     }
 
     public String getUrl(String alias){
-//        if (urls.containsKey(alias)){
             return (String)urls.get(alias);
-//        } else {
-//            return null;
-//        }
+    }
+
+    private String randomString(int length,boolean num){
+
+        String string = "";
+        int max =  122;
+        int min = (num)?49:65;
+
+        Integer[] excludedCodes = {58,59,60,61,62,63,64,91,92,93,94,95,96};
+
+        List<Integer> excludedAscii = Arrays.asList(excludedCodes);
+
+        int random_int;
+
+        for(int i=0;i<length;i++) {
+            do{
+                random_int = (int) (Math.random() * (max - min + 1) + min);
+            } while (excludedAscii.contains(random_int));
+            string += (char)random_int;
+        }
+
+        return string;
     }
 }

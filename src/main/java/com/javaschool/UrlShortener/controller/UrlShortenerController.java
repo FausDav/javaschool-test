@@ -10,6 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Hashtable;
 
 @RestController
@@ -21,6 +22,11 @@ public class UrlShortenerController {
     @GetMapping("/")
     public String getURL(){
         return  "Testing";
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<Hashtable<String,String>> getAllURL(){
+        return  ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/{id}")
@@ -35,9 +41,10 @@ public class UrlShortenerController {
 
     @PostMapping
     public ResponseEntity<Hashtable> create(@RequestBody Url shortedUrl) throws URISyntaxException {
+
         String createdShortUrl = service.create(shortedUrl);
         if (createdShortUrl == null) {
-            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).build();
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } else {
             Hashtable<String,String> alias = new Hashtable<>(1);
             alias.put("alias",createdShortUrl);
@@ -52,4 +59,5 @@ public class UrlShortenerController {
             return response;
         }
     }
+
 }
