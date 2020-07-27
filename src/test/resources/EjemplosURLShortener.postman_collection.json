@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "804a6c98-9831-4319-9ab3-0673a7cd82f9",
+		"name": "EjemplosURLShortener",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01_Get not registered alias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{target}}/UrlShortener/abc12",
+					"host": [
+						"{{target}}"
+					],
+					"path": [
+						"UrlShortener",
+						"abc12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02_POST Google 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"www.google.maps.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{target}}/UrlShortener/",
+					"host": [
+						"{{target}}"
+					],
+					"path": [
+						"UrlShortener",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03_POST Google 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"https://www.google.com.mx/maps/place/@19.6157681,-99.0239452,15z/data=!4m5!3m4!1s0x85d1ee1acd259075:0xfb030e39591359e3!8m2!3d19.615389!4d-99.0241715\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{target}}/UrlShortener/",
+					"host": [
+						"{{target}}"
+					],
+					"path": [
+						"UrlShortener",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04_POST Yahoo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"https://yahoo.com.mx/\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{target}}/UrlShortener/",
+					"host": [
+						"{{target}}"
+					],
+					"path": [
+						"UrlShortener",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05_POST Nearsoft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"https://nearsoft.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{target}}/UrlShortener/",
+					"host": [
+						"{{target}}"
+					],
+					"path": [
+						"UrlShortener",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06_POST Gamedev",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"https://www.gamedev.tv/test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{target}}/UrlShortener/",
+					"host": [
+						"{{target}}"
+					],
+					"path": [
+						"UrlShortener",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07_POST aaaa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"aaa.aaaa.aa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{target}}/UrlShortener/",
+					"host": [
+						"{{target}}"
+					],
+					"path": [
+						"UrlShortener",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08_POST tw itter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"https://tw itter.com/home\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{target}}/UrlShortener/",
+					"host": [
+						"{{target}}"
+					],
+					"path": [
+						"UrlShortener",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09_GET gamedev",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{target}}/UrlShortener/httpswwwgmdvtvtst",
+					"host": [
+						"{{target}}"
+					],
+					"path": [
+						"UrlShortener",
+						"httpswwwgmdvtvtst"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
