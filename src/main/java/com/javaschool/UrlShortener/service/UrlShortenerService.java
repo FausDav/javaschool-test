@@ -25,8 +25,8 @@ public class UrlShortenerService {
             } else if (url.getUrl().toLowerCase().contains("yahoo")){
                 shortUrl = randomString(7,true);
             } else {
-
                 shortUrl = url.getUrl().replaceAll("[^a-z]", "");
+                shortUrl = shortUrl.replaceAll("[aeiou]","");
             }
 
             urls.put(shortUrl,url.getUrl().toLowerCase());
