@@ -26,14 +26,19 @@ public class UrlShortenerController {
 
     @GetMapping("/all")
     public ResponseEntity<Hashtable<String,String>> getAllURL(){
-        return  ResponseEntity.ok(service.getAll());
+        Hashtable list = service.getAll();
+        if (list.size()==0){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(setErrorMessage("No hay URLs registradas"));
+        } else {
+            return ResponseEntity.ok(list);
+        }
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<String> read(@PathVariable("id") String id) {
         String url = service.getUrl(id);
         if (url == null) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Alias no registrado");
         } else {
             return ResponseEntity.ok(url);
         }
@@ -42,9 +47,13 @@ public class UrlShortenerController {
     @PostMapping
     public ResponseEntity<Hashtable> create(@RequestBody Url shortedUrl) throws URISyntaxException {
 
+        if(!isValidUrl(shortedUrl.getUrl())){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(setErrorMessage("URL inválida"));
+        }
+
         String createdShortUrl = service.create(shortedUrl);
         if (createdShortUrl == null) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(setErrorMessage("La URL ya está registrada"));
         } else {
             Hashtable<String,String> alias = new Hashtable<>(1);
             alias.put("alias",createdShortUrl);
@@ -60,4 +69,18 @@ public class UrlShortenerController {
         }
     }
 
+    private boolean isValidUrl(String url){
+        try {
+            new URL(url).toURI();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private Hashtable<String,String> setErrorMessage(String message){
+        Hashtable<String,String> hashtable = new Hashtable<>(1);
+        hashtable.put("message",message);
+        return hashtable;
+    }
 }
