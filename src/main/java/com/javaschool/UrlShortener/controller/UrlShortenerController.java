@@ -47,7 +47,7 @@ public class UrlShortenerController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<Hashtable> create(@RequestBody Url shortedUrl) throws URISyntaxException {
 
         if(!isValidUrl(shortedUrl.getUrl())){

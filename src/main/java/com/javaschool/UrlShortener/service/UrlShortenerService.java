@@ -29,8 +29,9 @@ public class UrlShortenerService {
                 shortUrl = shortUrl.replaceAll("[aeiou]","");
             }
 
-            urls.put(shortUrl,url.getUrl().toLowerCase());
-
+            if(!shortUrl.isEmpty()) {
+                urls.put(shortUrl, url.getUrl().toLowerCase());
+            }
             return shortUrl;
         }
     }
