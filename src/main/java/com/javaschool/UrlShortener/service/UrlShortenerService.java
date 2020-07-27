@@ -16,21 +16,22 @@ public class UrlShortenerService {
 
 
     public String create(Url url){
-        if (urls.containsValue(url.getUrl().toLowerCase())){
+        String urlToShort = url.getUrl().toLowerCase();
+        if (urls.containsValue(urlToShort)){
             return null;
         } else {
             String shortUrl;
-            if(url.getUrl().toLowerCase().contains("google")){
+            if(urlToShort.contains("google")){
                 shortUrl = randomString(5,false);
-            } else if (url.getUrl().toLowerCase().contains("yahoo")){
+            } else if (urlToShort.contains("yahoo")){
                 shortUrl = randomString(7,true);
             } else {
-                shortUrl = url.getUrl().replaceAll("[^a-z]", "");
+                shortUrl = urlToShort.replaceAll("[^a-z]", "");
                 shortUrl = shortUrl.replaceAll("[aeiou]","");
             }
 
             if(!shortUrl.isEmpty()) {
-                urls.put(shortUrl, url.getUrl().toLowerCase());
+                urls.put(shortUrl, urlToShort);
             }
             return shortUrl;
         }
