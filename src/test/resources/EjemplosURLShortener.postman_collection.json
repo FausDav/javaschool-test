@@ -57,7 +57,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"url\": \"https://www.google.com.mx/maps/place/@19.6157681,-99.0239452,15z/data=!4m5!3m4!1s0x85d1ee1acd259075:0xfb030e39591359e3!8m2!3d19.615389!4d-99.0241715\"\r\n}",
+					"raw": "{\r\n    \"url\": \"https://www.google.com/maps/place/Castillo+de+Chapultepec/@19.4204447,-99.1841237,17z/data=!4m5!3m4!1s0x85d1fecd47ed8f23:0xa6e0008524818b32!8m2!3d19.4204399!4d-99.181935\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -218,13 +218,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{target}}/UrlShortener/httpswwwgmdvtvtst",
+					"raw": "{{target}}/UrlShortener/httpsnrsftcm",
 					"host": [
 						"{{target}}"
 					],
 					"path": [
 						"UrlShortener",
-						"httpswwwgmdvtvtst"
+						"httpsnrsftcm"
 					]
 				}
 			},
