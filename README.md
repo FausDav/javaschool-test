@@ -46,6 +46,8 @@ Con esta división se tiene claro donde es que hay que realizar modificaciones, 
 
 ## Ejemplos
 
+Los siguientes ejemplos se encuentran en el archivo [EjemplosURLShortener.postman_collection.json](/src/test/resources/EjemplosURLShortener.postman_collection.json) para ser importados en Postman. Cabe mencionar que las respuestas aquí dadas variarán por ejecución para las URL que contienen las palabras _yahoo_ o _google_.
+
 1. **Petición**: GET {host}/UrlShortener/abc12
 
    - **Respuesta**: Alias no registrado
